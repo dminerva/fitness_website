@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TDEE</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tdee.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>Calulate your TDEE</h1>
+            <p class="lead">(Total Daily Energy Expenditure)</p>
+
+            <div class="form-group">
+                <p>Sex</p>
+                <select name="sexSelect" id="sexSelect" required>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select>
+            </div>
+            <div class="form-group">
+               <p>Height</p>
+               <input type="number" id="heightFeet" placeholder="feet" name="heightFeet" min="1" max="8" required>
+               <input type="number" id="heightInch" placeholder="inches" name"heightInch" min="0" max="11" required>
+            </div>
+            <div class="form-group">
+                <p>Weight</p>
+                <input type="number" id="weight" placeholder="lbs" name="weight" min="1" required>
+            </div>
+            <div class="form-group">
+                <p>Age</p>
+                <input type="number" id="age" placeholder="years" name="age" min="1" required>
+            </div>
+            <div class="form-group">
+                <p>Activity level</p>
+                <select name="activity" id="activity">
+                    <option value="sedentary">sedentary</option>
+                    <option value="light">lightly active</option>
+                    <option value="moderate">moderately active</option>
+                    <option value="very">very active</option>
+                </select>
+            </div>
+
+            <p class="buttonP"><a class="btn btn-lg btn-success" href="#" role="button">Calculate</a></p>
+        </div>
+
+        <div class="row marketing">
+            <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+
+            <div class="col-lg-6">
+            <h4>Subheading</h4>
+            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+
+            <h4>Subheading</h4>
+            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+            <h4>Subheading</h4>
+            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/tdee.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#header").load("header.html");
+    });
+    </script>
+</body>
+</html>
