@@ -1,6 +1,11 @@
 function convertHeight(feet, inch) {
-    var heightInInches = parseFloat((feet * 12) + inch);
-    var heightInCm = parseFloat(heightInInches * 2.54);
+    var currFeet = parseInt(feet);
+    var currInch = parseInt(inch);
+
+    var feetInInches = parseInt(currFeet * 12);
+    var heightInInches = parseInt(feetInInches + currInch);
+
+    var heightInCm = parseFloat(heightInInches * 2.54)
 
     return heightInCm;
 }
@@ -16,10 +21,12 @@ function calculateTdee(x) {
     var bmr;
     var tdee;
 
+    //**********    PROBLEM
+    //**********    BMR RETURNING UNDEFINED
     if(this.x == "male") {
-        bmr = 66 + (13.7 * x.weight) + (5 * x.height) - (6.8 * age);
+        //bmr = (66 + (13.7 * Number(x.weight)) + (5 * Number(x.height)) - (6.8 * Number(x.age)));
     } else if(this.x == "female") {
-        bmr = 655 + (9.6 * x.weight) + (1.8 * x.height) - (4.7 * x.age);
+        //bmr = (655 + (9.6 * x.weight) + (1.8 * x.height) - (4.7 * x.age));
     }
 
     if(x.activity == "sedentary") {
@@ -46,6 +53,16 @@ function Person(sex, feet, inch, weight, age, activity) {
 $(document).ready(function() {
     $("#buttonP").click(function() {
         var sex = $("#sexSelect option:selected").text();
-        
+        var feet = $("#heightFeet").val();
+        var inch = $("#heightInch").val();
+        var weight = $("#weight").val();
+        var age = $("#age").val();
+        //var activity = $("#activity option:selected").text();
+        var activity = $("#activity").val();
+
+        var currUser = new Person(sex, feet, inch, weight, age, activity);
+        var tdee = calculateTdee(currUser);
+
+        $("#tester").text(tdee);
     })
 })
