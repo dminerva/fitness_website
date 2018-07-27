@@ -21,12 +21,10 @@ function calculateTdee(x) {
     var bmr;
     var tdee;
 
-    //**********    PROBLEM
-    //**********    BMR RETURNING UNDEFINED
-    if(this.x == "male") {
-        //bmr = (66 + (13.7 * Number(x.weight)) + (5 * Number(x.height)) - (6.8 * Number(x.age)));
-    } else if(this.x == "female") {
-        //bmr = (655 + (9.6 * x.weight) + (1.8 * x.height) - (4.7 * x.age));
+    if(x.sex == "male") {
+        bmr = (66 + (13.7 * Number(x.weight)) + (5 * Number(x.height)) - (6.8 * Number(x.age)));
+    } else if(x.sex == "female") {
+        bmr = (655 + (9.6 * x.weight) + (1.8 * x.height) - (4.7 * x.age));
     }
 
     if(x.activity == "sedentary") {
@@ -39,7 +37,7 @@ function calculateTdee(x) {
         tdee = bmr * 1.725;
     }
 
-    return tdee;
+    return parseInt(tdee);
 }
 
 function Person(sex, feet, inch, weight, age, activity) {
@@ -57,12 +55,22 @@ $(document).ready(function() {
         var inch = $("#heightInch").val();
         var weight = $("#weight").val();
         var age = $("#age").val();
-        //var activity = $("#activity option:selected").text();
         var activity = $("#activity").val();
+        var goal = $("#goal").val();
 
         var currUser = new Person(sex, feet, inch, weight, age, activity);
         var tdee = calculateTdee(currUser);
 
-        $("#tester").text(tdee);
+        if(goal == "looseOne") {
+            tdee -= 500;
+        } else if(goal == "looseHalf") {
+            tdee -= 250;
+        } else if(goal == "gainHalf") {
+            tdee += 250;
+        } else if(goal == "gainOne") {
+            tdee += 500;
+        }
+
+        $("#tester").text("You need to eat " + tdee + " calories a day");
     })
 })
